@@ -1,10 +1,12 @@
-import './App.css';
+import styles from  './App.module.css';
+import Filters from '../Filters/Filters';
+import FlightsList from '../FlightsList/FlightsList';
 
 function App() {
   return (
-    <div className="App">
-      <div></div>
-      <div></div>
+    <div className={styles.app}>
+      <Filters />
+      <FlightsList />
     </div>
   );
 }

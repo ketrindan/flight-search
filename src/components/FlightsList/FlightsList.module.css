@@ -1,0 +1,23 @@
+.flightsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.btn {
+  width: 30%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.btn:hover {
+  opacity: 0.6;
+}

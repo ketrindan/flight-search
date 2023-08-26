@@ -1,12 +1,15 @@
-.App {
+.app {
   min-height: 100vh;
+  min-width: 1070px;
+  max-width: 1200px;
   background-color: white;
   margin: 0 auto;
   padding: 20px 30px 40px 30px;
-  color: #F2F2F3;
+  color: black;
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 30px;
   box-sizing: border-box;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 

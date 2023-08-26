@@ -1,0 +1,61 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 20px;
+  position: sticky;
+  top: 40px;
+  height: max-content;
+}
+
+.fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.heading {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 16px;
+  margin: 0 0 10px 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 5px
+}
+
+.label {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-size: 14px;
+}
+
+.label_airline {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.label_modified::before {
+  content: '- ';
+}
+
+.text_input {
+  max-width: 200px;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.text_input:focus {
+  outline-width: 3px;
+  outline-color:#4682B4;
+}
+
+.filter {
+  cursor: pointer;
+}
