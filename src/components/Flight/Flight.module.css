@@ -14,6 +14,10 @@
   color: white;
 }
 
+.image {
+  max-height: 46px;
+}
+
 .priceInfo {
   display: flex;
   flex-direction: column;

@@ -1,7 +1,12 @@
 import filtersStyles from  './Filters.module.css';
 import AirlineCheckbox from '../AirlineCheckbox/AirlineCheckbox';
+import { v4 as uuidv4 } from 'uuid';
 
-function Filters() {
+function Filters(props) {
+  function getMinPrice(airline) {
+    return props.minPrices[airline];
+  }
+
   return (
     <section className={filtersStyles.filters}>
       <div className={filtersStyles.fieldset}>
@@ -43,8 +48,9 @@ function Filters() {
       </div>
       <div className={filtersStyles.fieldset}>
         <h2 className={filtersStyles.heading}>Авиакомпании</h2>
-        <AirlineCheckbox airline={'LOT Polish Airlines'} price={21409} />
-        <AirlineCheckbox airline={'Аэрофлот - российские авиалинии'} price={31733} />
+        {props.airlines.map((airline) => (
+          <AirlineCheckbox key={uuidv4()} airline={airline} price={getMinPrice(airline)}/>
+        ))}
       </div>
     </section>
   );
