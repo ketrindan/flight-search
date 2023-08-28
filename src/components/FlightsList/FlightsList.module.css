@@ -21,3 +21,10 @@
 .btn:hover {
   opacity: 0.6;
 }
+
+.text {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-size: 24px;
+  margin-top: 100px;
+}
