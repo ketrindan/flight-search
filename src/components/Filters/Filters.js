@@ -49,7 +49,7 @@ function Filters(props) {
       <div className={filtersStyles.fieldset}>
         <h2 className={filtersStyles.heading}>Авиакомпании</h2>
         {props.airlines.map((airline) => (
-          <AirlineCheckbox key={uuidv4()} airline={airline} price={getMinPrice(airline)} handleChoose={props.handleAirlinesSearch}/>
+          <AirlineCheckbox key={uuidv4()} airline={airline} price={getMinPrice(airline)} handleChoose={props.handleAirlinesSearch} chosenAirlines={props.chosenAirlines}/>
         ))}
       </div>
     </section>
