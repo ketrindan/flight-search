@@ -10,7 +10,7 @@ function App() {
   const [foundFlights, setFoundFlights] = useState([]);
   const [isSorted, setIsSorted] = useState(false);
   const [sortingChecked, setSortingChecked] = useState(null);
-  const [filterChecked, setFilterChecked] = useState(null);
+  const [filterChecked, setFilterChecked] = useState([]);
   const [minPriceChecked, setMinPriceChecked] = useState(null);
   const [maxPriceChecked, setMaxPriceChecked] = useState(null);
   const [airlinesChecked, setAirlinesChecked] = useState([]);
@@ -58,19 +58,18 @@ function App() {
     }
   }
 
-  function toggleFilter() {
-    const filters = document.querySelectorAll('input[name="filter"]');
-    for (const i of filters) {
-      if (i.checked) {
-        setFilterChecked(i.value)
-        setIsSorted(true)
-      } else {
-        setFilterChecked(null)
-        console.log(isSorted)
-        if (airlinesChecked.length === 0 && maxPriceChecked === null && minPriceChecked === null) {
-          setIsSorted(false)
-          console.log(isSorted)
-        }
+  function toggleFilter(e) {
+    const {value, checked} = e.target;
+
+    if (checked) {
+      setFilterChecked([...filterChecked, value])
+      setIsSorted(true)
+    } else {
+      setFilterChecked(filterChecked.filter((i => i !== value)))
+      if (filterChecked.filter((i => i !== value)).length === 0 && airlinesChecked.length === 0 
+        && maxPriceChecked === null && minPriceChecked === null
+      ) {
+        setIsSorted(false)
       }
     }
   }
@@ -103,7 +102,7 @@ function App() {
     } else {
       setMinPriceChecked(null);
       setMaxPriceChecked(null);
-      if (airlinesChecked.length === 0 && filterChecked === null) {
+      if (airlinesChecked.length === 0 && filterChecked.length === 0) {
         setIsSorted(false);
       }
     }
@@ -119,7 +118,7 @@ function App() {
     } else {
       setAirlinesChecked(airlinesChecked.filter((i => i !== value)))
       if (airlinesChecked.filter((i => i !== value)).length === 0 
-        && maxPriceChecked === null && minPriceChecked === null && filterChecked === null
+        && maxPriceChecked === null && minPriceChecked === null && filterChecked.length === 0
       ) {
         setIsSorted(false)
       }
@@ -148,11 +147,23 @@ function App() {
   }
 
   function filterFlights(data, filter) {
-    if (filter !== null) {
-      if (filter === "1_change") {
-        return data.filter(a => a.flight.legs[0].segments.length === 2 || a.flight.legs[1].segments.length === 2)
-      } else if (filter === "no_change") {
-        return data.filter(a => a.flight.legs[0].segments.length === 1 && a.flight.legs[1].segments.length === 1)
+    if (filter.length > 0) {
+      if (filter.includes("1_change")) {
+        if (filter.includes("no_change")) {
+          return data.filter(a => (a.flight.legs[0].segments.length === 1 && a.flight.legs[1].segments.length === 1) 
+          || a.flight.legs[0].segments.length + a.flight.legs[1].segments.length === 3);
+        } else {
+          return data.filter(a => (a.flight.legs[0].segments.length + a.flight.legs[1].segments.length) === 3);
+        }
+      } 
+      
+      if (filter.includes("no_change")) {
+        if (filter.includes("1_change")) {
+          return data.filter(a => (a.flight.legs[0].segments.length + a.flight.legs[1].segments.length) === 3
+          || (a.flight.legs[0].segments.length === 1 && a.flight.legs[1].segments.length === 1));
+        } else {
+          return data.filter(a => a.flight.legs[0].segments.length === 1 && a.flight.legs[1].segments.length === 1);
+        }
       }
     } else {
       return data;
@@ -193,83 +204,29 @@ function App() {
 
   useEffect(() => {
     if (isSorted) {
+      let sortedFlights = [...flightsData]
       if (sortingChecked !== null) {
-        const flights = sortFlights(flightsData, sortingChecked);
-        setFoundFlights(() => [...flights]);
-      }
-    } else {
-      setFoundFlights(flightsData);
-    }
-    
-  }, [isSorted, sortingChecked, flightsData]);
-
-  useEffect(() => {
-    if (isSorted) {
-      if (filterChecked !== null) {
-        const flights = filterFlights(flightsData, filterChecked);
-        setFoundFlights(() => [...flights]);
-      }
-    } else {
-      setFoundFlights(flightsData);
-    }
-    
-  }, [isSorted, flightsData, filterChecked]);
-
-  useEffect(() => {
-    if (isSorted) {
-      if (minPriceChecked !== null || maxPriceChecked !== null) {
-        const flights = searchPrice(flightsData, minPriceChecked, maxPriceChecked);
-        setFoundFlights(() => [...flights]);
-        console.log(flights)
-      }
-    } else {
-      setFoundFlights(flightsData);
-    }
-    
-  }, [isSorted, flightsData, minPriceChecked, maxPriceChecked]);
-
-  useEffect(() => {
-    if (isSorted) {
-      if (airlinesChecked.length > 0) {
-        const flights = searchAirlines(flightsData, airlinesChecked);
-        setFoundFlights(() => [...flights]);
-        console.log(flights)
-      }
-    } else {
-      setFoundFlights(flightsData);
-    }
-    
-  }, [isSorted, flightsData, airlinesChecked]);
-
-  /*useEffect(() => {
-    if (isSorted) {
-      if (sortingChecked !== null) {
-        const flights = sortFlights(flightsData, sortingChecked);
-        setFoundFlights(() => [...flights]);
+        sortedFlights = sortFlights(sortedFlights, sortingChecked);
       }
 
-      if (filterChecked !== null) {
-        const flights = filterFlights(flightsData, filterChecked);
-        setFoundFlights(() => [...flights]);
+      if (filterChecked.length > 0) {
+        sortedFlights = filterFlights(sortedFlights, filterChecked);
       }
 
       if (minPriceChecked !== null || maxPriceChecked !== null) {
-        const flights = searchPrice(flightsData, minPriceChecked, maxPriceChecked);
-        setFoundFlights(() => [...flights]);
-        console.log(flights)
+        sortedFlights = searchPrice(sortedFlights, minPriceChecked, maxPriceChecked);
       }
 
       if (airlinesChecked.length > 0) {
-        const flights = searchAirlines(flightsData, airlinesChecked);
-        setFoundFlights(() => [...flights]);
-        console.log(flights)
+        sortedFlights = searchAirlines(sortedFlights, airlinesChecked);
       }
+      setFoundFlights(sortedFlights);
     } else {
       setFoundFlights(flightsData);
     }
-    
-  }, [isSorted, sortingChecked, flightsData, filterChecked, minPriceChecked, maxPriceChecked, airlinesChecked]);*/
 
+    
+  }, [isSorted, sortingChecked, flightsData, filterChecked, minPriceChecked, maxPriceChecked, airlinesChecked]);
 
   return (
     <div className={styles.app}>
