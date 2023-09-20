@@ -1,7 +1,6 @@
 .container {
   display: flex;
   align-items: center;
-  gap: 5px
 }
 
 .label {
@@ -12,6 +11,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-left: 5px;
 }
 
 .label::before {
@@ -22,9 +22,20 @@
   font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-style: normal;
   font-size: 14px;
-  margin-left: 5px;
+  margin-left: auto;
 }
 
 .filter {
   cursor: pointer;
+}
+
+@media screen and (max-width: 980px) {
+  .label {
+    font-size: 12px;
+    margin-left: 3px;
+  }
+
+  .span_price {
+    font-size: 12px;
+  }
 }

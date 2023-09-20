@@ -1,11 +1,14 @@
+.section {
+  display: flex;
+  position: sticky;
+  top: 20px;
+  height: max-content;
+}
+
 .filters {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin-top: 20px;
-  position: sticky;
-  top: 40px;
-  height: max-content;
 }
 
 .fieldset {
@@ -58,4 +61,78 @@
 
 .filter {
   cursor: pointer;
+}
+
+.btn {
+  display: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.btn:hover {
+  opacity: 0.6;
+}
+
+.image {
+  height: 100%;
+  transition: 0.5s linear;
+}
+
+.image_transformed {
+  transform: rotate(180deg);
+}
+
+@media screen and (max-width: 980px) {
+  .filters {
+    gap: 25px;
+  }
+
+  .heading {
+    font-size: 14px;
+    line-height: 12px;
+  }
+
+  .label {
+    font-size: 12px;
+  }
+
+  .text_input {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .section {
+    flex-direction: column;
+    top: 0;
+    background-color: white;
+    padding-top: 20px;
+  }
+  
+  .filters {
+    display: none;
+    transition: display 0.4s ease;
+  }
+
+  .filters_opened {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    row-gap: 20px;
+    margin: 0 0 20px 0;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .text_input {
+    max-width: 130px;
+  }
+  
+  .btn {
+    display: block;
+    width: 100%;
+    height: 25px;
+    border: 1px solid #4682B4;
+    border-radius: 10px;
+  }
 }

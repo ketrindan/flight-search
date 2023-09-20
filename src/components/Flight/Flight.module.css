@@ -150,3 +150,69 @@
 .btn:hover {
   opacity: 0.6;
 }
+
+@media screen and (max-width: 980px) {
+  .heading {
+    padding: 3px 20px;
+  }
+
+  .image {
+    max-height: 40px;
+  }
+
+  .price {
+    font-size: 18px;
+  }
+  
+  .priceText {
+    font-size: 12px;
+  }
+
+  .route {
+    font-size: 16px;
+    margin: 8px auto 17px;
+    padding-bottom: 8px;
+    text-align: center;
+  }
+
+  .airport {
+    font-size: 12px;
+  }
+
+  .airport_mod::after {
+    content: ' \2192  ';
+    font-size: 16px;
+  }
+
+  .info {
+    margin: 16px auto;
+  }
+  
+  .time {
+    font-size: 16px;
+  }
+  
+  .date {
+    font-size: 12px;;
+  }
+  
+  .duration {
+    font-size: 16px;
+  }
+  
+  .change {
+    font-size: 15px;
+    margin-top: -12px;
+  }
+  
+  .airline {
+    font-size: 14px;
+    margin: 0 0 7px 0;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+}
