@@ -216,3 +216,195 @@
     padding-bottom: 7px;
   }
 }
+
+@media screen and (max-width: 510px) {
+  .heading {
+    padding: 3px 10px;
+  }
+
+  .image {
+    max-height: 30px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .priceText {
+    font-size: 10px;
+  }
+
+  .route {
+    font-size: 13px;
+    margin: 5px auto 14px;
+    padding-bottom: 5px;
+  }
+
+  .airport {
+    font-size: 12px;
+  }
+
+  .airport_mod::after {
+    content: ' \2192  ';
+    font-size: 14px;
+  }
+
+  .info {
+    margin: 12px auto;
+  }
+  
+  .time {
+    font-size: 13px;
+  }
+  
+  .date {
+    font-size: 10px;;
+  }
+  
+  .duration {
+    font-size: 13px;
+  }
+  
+  .change {
+    font-size: 10px;
+    margin-top: -9px;
+  }
+  
+  .airline {
+    font-size: 12px;
+    margin: 0 0 5px 0;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 510px) {
+  .heading {
+    padding: 3px 10px;
+  }
+
+  .image {
+    max-height: 30px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .priceText {
+    font-size: 10px;
+  }
+
+  .route {
+    font-size: 13px;
+    margin: 5px auto 14px;
+    padding-bottom: 5px;
+  }
+
+  .airport {
+    font-size: 12px;
+  }
+
+  .airport_mod::after {
+    content: ' \2192  ';
+    font-size: 13px;
+  }
+
+  .info {
+    margin: 12px auto;
+  }
+  
+  .time {
+    font-size: 13px;
+  }
+  
+  .date {
+    font-size: 10px;;
+  }
+  
+  .duration {
+    font-size: 13px;
+  }
+  
+  .change {
+    font-size: 12px;
+    margin-top: -9px;
+  }
+  
+  .airline {
+    font-size: 12px;
+    margin: 0 0 5px 0;
+  }
+
+  .btn {
+    font-size: 12px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .change {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .image {
+    max-height: 25px;
+  }
+
+  .price {
+    font-size: 13px;
+  }
+
+  .priceText {
+    font-size: 9px;
+  }
+
+  .route {
+    font-size: 12px;
+    margin: 4px auto 12px;
+    padding-bottom: 3px;
+  }
+
+  .airport {
+    font-size: 10px;
+  }
+
+  .airport_mod::after {
+    content: ' \2192  ';
+    font-size: 12px;
+  }
+
+  .info {
+    margin: 10px auto;
+  }
+  
+  .time {
+    font-size: 12px;
+  }
+  
+  .duration {
+    font-size: 12px;
+  }
+  
+  .change {
+    font-size: 9px;
+    margin-top: -7px;
+  }
+  
+  .airline {
+    font-size: 10px;
+  }
+
+  .btn {
+    font-size: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+}

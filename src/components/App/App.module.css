@@ -27,3 +27,14 @@
   }
 }
 
+@media screen and (max-width: 425px) {
+  .app {
+    row-gap: 7px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .app {
+    padding: 10px 15px 20px 15px;
+  }
+}
