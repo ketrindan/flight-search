@@ -22,8 +22,8 @@
 @media screen and (max-width: 767px) {
   .app {
     grid-template-columns: 1fr;
-    padding-top: 0;
     row-gap: 10px;
+    padding-top: 0;
   }
 }
 
@@ -35,6 +35,6 @@
 
 @media screen and (max-width: 375px) {
   .app {
-    padding: 10px 15px 20px 15px;
+    padding: 0 15px 20px 15px;
   }
 }
