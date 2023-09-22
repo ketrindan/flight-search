@@ -107,7 +107,6 @@ function App() {
       }
     }
   }
-  
 
   function setAirlinesSearch(e) {
     const {value, checked} = e.target;
@@ -220,13 +219,64 @@ function App() {
       if (airlinesChecked.length > 0) {
         sortedFlights = searchAirlines(sortedFlights, airlinesChecked);
       }
-      setFoundFlights(sortedFlights);
+      setFoundFlights(sortedFlights);      
     } else {
       setFoundFlights(flightsData);
     }
-
     
   }, [isSorted, sortingChecked, flightsData, filterChecked, minPriceChecked, maxPriceChecked, airlinesChecked]);
+
+  function disableFilters(data) {
+    const filters = document.querySelectorAll('input[name="filter"]');
+    const airlinesFilters = document.querySelectorAll('input[name="airline_filter"]');
+
+    let arr1 = [];
+    let arr2 = [];
+    /*const obj = {}*/
+
+    if (maxPriceChecked != null || minPriceChecked != null || airlinesChecked.length > 0) {
+      for (let i of filters) {
+        arr1.push(i.value)
+        filterFlights(data, arr1).length === 0 ?
+          i.disabled = true : i.disabled = false
+        arr1 = []
+      }
+    } else {
+      for (let i of filters) {
+        i.disabled = false
+      }
+    }
+
+    if ((maxPriceChecked != null || minPriceChecked != null || filterChecked.length > 0)) {
+      for (let i of airlinesFilters) {
+        arr2.push(i.value)
+        searchAirlines(data, arr2).length === 0 ?
+          i.disabled = true : i.disabled = false
+        arr2 = []
+      }
+
+      /*if (airlinesChecked.length === 0) {
+        for (let i of airlinesFilters) {
+          arr2.push(i.value)
+          searchAirlines(data, arr2).length === 0 ?
+            i.disabled = true : i.disabled = false
+          arr2 = []
+          obj[i.value] = i.disabled
+        }
+      }
+
+      if (airlinesChecked.length !== 0) {
+        for (let i of airlinesFilters) {
+          i.disabled = obj[i.value]
+          console.log(obj[i.value])
+        }
+      }*/
+    }
+  }
+
+  useEffect(() => {
+      disableFilters(foundFlights)
+  }, [foundFlights])
 
   return (
     <div className={styles.app}>
