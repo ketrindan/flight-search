@@ -232,7 +232,6 @@ function App() {
 
     let arr1 = [];
     let arr2 = [];
-    /*const obj = {}*/
 
     if (maxPriceChecked != null || minPriceChecked != null || airlinesChecked.length > 0) {
       for (let i of filters) {
@@ -254,23 +253,6 @@ function App() {
           i.disabled = true : i.disabled = false
         arr2 = []
       }
-
-      /*if (airlinesChecked.length === 0) {
-        for (let i of airlinesFilters) {
-          arr2.push(i.value)
-          searchAirlines(data, arr2).length === 0 ?
-            i.disabled = true : i.disabled = false
-          arr2 = []
-          obj[i.value] = i.disabled
-        }
-      }
-
-      if (airlinesChecked.length !== 0) {
-        for (let i of airlinesFilters) {
-          i.disabled = obj[i.value]
-          console.log(obj[i.value])
-        }
-      }*/
     }
   }
 
